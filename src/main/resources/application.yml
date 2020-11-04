@@ -1,0 +1,27 @@
+max-file-upload-size: 200 # kilobytes
+
+spring:
+  servlet:
+    multipart:
+      #TODO this needs proper error handling in case of exceeding the limit
+      max-file-size: 200KB
+      max-request-size: 200KB
+
+#TODO for staging environment we could save passwords here, in production pass this params as vm arguments
+integration:
+  extraction-service:
+    account: sourcebox_test
+    username: username
+    password: password
+    serverUrl: https://server_url/
+    corePoolSize: 1
+    maxPoolSize: 10
+    keepAliveTime: 5000 #milliseconds
+
+#should be stored separately in some vault
+jwt-secret : "secret"
+
+# TODO this should be tuned properly according to our expectations
+http-client:
+  readTimeout: 10000 #milliseconds
+  connectTimeout: 10000 #milliseconds
